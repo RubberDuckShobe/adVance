@@ -18,7 +18,9 @@ namespace adVance
     {
         public string Name => "adVance";
         public string Version => "0.1.1";
-        public bool arePeripheralsWhite = false;
+
+        public static bool arePeripheralsWhite = false;
+
         public int oldTargetFramerate;
 
         public void OnApplicationStart()
@@ -74,23 +76,10 @@ namespace adVance
         {
             //Code to execute whenever a graphics update occurs
 
-            //Razer Chroma integration
-            //Set the colors of all peripherals to white if they aren't already set to white
-            if (arePeripheralsWhite == false)
-            {
-                Console.WriteLine("[" + Name + "] Set all Razer peripheral colors to white");
-                Chroma.Instance.SetAll(ColoreColor.White);
-                arePeripheralsWhite = true;
-            }
-            
-            Chroma.Instance.Keyboard[Key.Left] = ColoreColor.Green;
-            Chroma.Instance.Keyboard[Key.Right] = ColoreColor.Red;
-
-            //Set first LED strip of the mouse to red
-            Chroma.Instance.Mouse.SetLed(Corale.Colore.Razer.Mouse.Led.Strip1, ColoreColor.Red);
-
-            //Set second LED strip of the mouse to green
-            Chroma.Instance.Mouse.SetLed(Corale.Colore.Razer.Mouse.Led.Strip2, ColoreColor.Green);
+            //See RazerChroma.cs
+            RazerChroma.Init();
+            Console.WriteLine("[" + Name + "] Set all Razer peripheral colors to white");
+            RazerChroma.UpdateColors();
 
             //Custom refresh rate cap - Sets the game's maximum refresh rate to 300.
             if (Application.targetFrameRate != 300)
