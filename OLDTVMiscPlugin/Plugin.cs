@@ -8,16 +8,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using IllusionPlugin;
-using ColoreColor = Corale.Colore.Core.Color;
-using Corale.Colore.Core;
-using Corale.Colore.Razer.Keyboard;
 
 namespace adVance
 {
     public class Plugin : IPlugin
     {
         public string Name => "adVance";
-        public string Version => "0.1.1";
+        public string Version => "0.2.1";
 
         public static bool arePeripheralsWhite = false;
 
@@ -35,9 +32,10 @@ namespace adVance
         private void SceneManagerOnActiveSceneChanged(Scene oldScene, Scene newScene)
         {
             Console.WriteLine("[" + Name + "] SceneManagerOnActiveSceneChanged is running, oldScene is " + oldScene.name + " and newScene is " + newScene.name);
-            if (newScene.name == "SceneNameHere")
+            if (newScene.name == "Main (PC)")
             {
-                //Code to execute when entering a certain scene
+                //Code to execute when the active scene switched to the main scene
+                new GameObject().AddComponent<OLDTVResources>();
             }
         }
 
@@ -78,7 +76,6 @@ namespace adVance
 
             //See RazerChroma.cs
             RazerChroma.Init();
-            Console.WriteLine("[" + Name + "] Set all Razer peripheral colors to white");
             RazerChroma.UpdateColors();
 
             //Custom refresh rate cap - Sets the game's maximum refresh rate to 300.

@@ -9,18 +9,25 @@ namespace adVance
 {
     class OLDTVResources : MonoBehaviour
     {
-        //Currently unused - feel free to add something if you want to
+        //Responsible for interfacing with game variables, objects etc.
         private GamePlay gp;
+        public static Color gameTextColorRGBA;
 
         void Awake()
         {
             StartCoroutine(GetRequired());
+            Console.WriteLine("[adVance] OLDTVResources.Awake() ran");
         }
 
         IEnumerator GetRequired()
         {
             yield return new WaitUntil(() => Resources.FindObjectsOfTypeAll<GamePlay>().Any());
             gp = Resources.FindObjectsOfTypeAll<GamePlay>().FirstOrDefault();
+        }
+
+        void Update()
+        {
+            gameTextColorRGBA = gp.ColorText.GetComponent<TextMesh>().color;
         }
     }
 }
