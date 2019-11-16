@@ -5,7 +5,7 @@ It's using .NET Framework 3.5 and is installed just like any other regular IPA p
 It's also built on [Kylemc1413's Beat Saber Plugin Template](https://github.com/Kylemc1413/BS-Plugin-Template/).
 
 ## Features
-- Razer Chroma Support (
+- Razer Chroma Support (shows current color, colored arrow keys)
 - Refresh rate of up to 300FPS
 
 ## Installation
@@ -18,6 +18,7 @@ Keep in mind that there's a possibility that some of these features might not be
 - The ability to get the current continent
 - 4:3 resolution support
 - Discord Rich Presence (unlikely, reconsidering)
+- Improve Razer Chroma Support (more features)
 
 ## Why?
 To learn C#, Unity game modding/developing and to make OLDTV even better.
