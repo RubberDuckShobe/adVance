@@ -9,9 +9,7 @@ It's also built on [Kylemc1413's Beat Saber Plugin Template](https://github.com/
 - Refresh rate of up to 300FPS
 
 ## Installation
-Install IPA. Refer to the guide on the [IPA GitHub repository](https://github.com/Eusth/IPA/README.md) for installing IPA.
-Get a release of adVance from the [releases page](https://github.com/RubberDuckShobe/adVance/releases).
-Open the directory the game is installed in and put the contents of the .zip file in the Plugins folder that IPA created in the game's root directory. **Do not put them inside V_Data/Plugins! It won't work!**
+Refer to [adVance's Wiki](https://github.com/RubberDuckShobe/adVance/wiki) for a detailed guide on how to install adVance.
 
 ## Planned Features
 Keep in mind that there's a possibility that some of these features might not be added depending on neccessity and how difficult adding them is.
