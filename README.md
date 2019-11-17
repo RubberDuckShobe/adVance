@@ -7,6 +7,7 @@ It's also built on [Kylemc1413's Beat Saber Plugin Template](https://github.com/
 ## Features
 - Razer Chroma Support (shows current color, colored arrow keys)
 - Refresh rate of up to 300FPS
+- Can get current color of game text and much more
 
 ## Installation
 Refer to [adVance's Wiki](https://github.com/RubberDuckShobe/adVance/wiki) for a detailed guide on how to install adVance.
