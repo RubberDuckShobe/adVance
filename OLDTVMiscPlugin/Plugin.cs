@@ -14,7 +14,7 @@ namespace adVance
     public class Plugin : IPlugin
     {
         public string Name => "adVance";
-        public string Version => "0.2.1";
+        public string Version => "0.3.1";
 
         public static bool arePeripheralsWhite = false;
 
