@@ -35,6 +35,8 @@ namespace adVance
             if (newScene.name == "Main (PC)")
             {
                 //Code to execute when the active scene switched to the main scene
+
+                //Adds the OLDTVResources GameObject
                 new GameObject().AddComponent<OLDTVResources>();
             }
         }

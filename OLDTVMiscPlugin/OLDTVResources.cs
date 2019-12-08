@@ -11,7 +11,10 @@ namespace adVance
     {
         //Responsible for interfacing with game variables, objects etc.
         private GamePlay gp;
+        private Monitor_FreqTimer MonitorFreqTimer;
+
         public static Color gameTextColorRGBA;
+        public static float currentFrequency;
 
         void Awake()
         {
@@ -23,11 +26,15 @@ namespace adVance
         {
             yield return new WaitUntil(() => Resources.FindObjectsOfTypeAll<GamePlay>().Any());
             gp = Resources.FindObjectsOfTypeAll<GamePlay>().FirstOrDefault();
+
+            yield return new WaitUntil(() => Resources.FindObjectsOfTypeAll<Monitor_FreqTimer>().Any());
+            MonitorFreqTimer = Resources.FindObjectsOfTypeAll<Monitor_FreqTimer>().FirstOrDefault();
         }
 
         void Update()
         {
             gameTextColorRGBA = gp.ColorText.GetComponent<TextMesh>().color;
+            currentFrequency = MonitorFreqTimer.currentFreq;
         }
     }
 }
