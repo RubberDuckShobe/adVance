@@ -1,4 +1,6 @@
 # adVance
+![adVance logo](https://github.com/RubberDuckShobe/adVance/blob/master/Images/adVance_logo.png)
+
 ## About
 [IPA](https://github.com/Eusth/IPA) Plugin for [OLDTV](https://store.steampowered.com/app/643270/OLDTV/).
 It's using .NET Framework 3.5 and is installed just like any other regular IPA plugin.
