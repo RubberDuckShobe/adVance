@@ -1,4 +1,7 @@
-# adVance
+[![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)](https://forthebadge.com)
+
 ![adVance logo](https://github.com/RubberDuckShobe/adVance/blob/master/Images/adVance_logo.png)
 
 ## About
