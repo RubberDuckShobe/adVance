@@ -11,8 +11,8 @@ It's using .NET Framework 3.5 and is installed just like any other regular IPA p
 It's also built on [Kylemc1413's Beat Saber Plugin Template](https://github.com/Kylemc1413/BS-Plugin-Template/).
 
 ## Features
-- Razer Chroma Link support! (Lights up your entire gaming setup with the current color ingame or even your ENTIRE ROOM if you have Philips Hue lights, unsure if it works with Nanoleaf)
-- Razer Chroma peripheral support (Shows current color in keys F1-F12, colored arrow keys in green and red)
+- Chroma Connect support! (Lights up your entire gaming setup with the current color ingame or even your ENTIRE ROOM if you have Philips Hue lights, unsure if it works with Nanoleaf)
+- Razer Chroma peripheral support (Shows current color in keys F1-F12, mouse wheel, mouse backlight, mouse logo, left/right arrow keys and mouse LED stripes in green and red)
 - Refresh rate of up to 300FPS
 - Can get current color of game text and more soon™
 
