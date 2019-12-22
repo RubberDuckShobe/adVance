@@ -13,12 +13,20 @@ namespace adVance
 {
     public class Plugin : IPlugin
     {
+        //Initialize variables
         public string Name => "adVance";
-        public string Version => "0.4.0";
+        public string Version => "0.5.0";
 
         public static bool arePeripheralsWhite = false;
 
         public int oldTargetFramerate;
+
+        public int targetFramerate;
+        public bool useCustomResolution;
+        public int customResolutionWidth;
+        public int customResolutionHeight;
+        public bool customResolutionFullscreen;
+        public bool showTrueBeautyOnStartup;
 
         public void OnApplicationStart()
         {
@@ -27,6 +35,25 @@ namespace adVance
             SceneManager.sceneLoaded += SceneManager_sceneLoaded;
 
             Console.WriteLine("[" + Name + "] OnApplicationStart is running");
+
+            //Initialize config and get values from config or use default value and write it to config if it doesn't exist
+            Config ConfigVariable = new Config("adVance");
+            targetFramerate = ConfigVariable.GetInt("Configuration", "FrameRateCap", 300, true);
+            useCustomResolution = ConfigVariable.GetBool("Configuration", "UseCustomResolution", false, true);
+            customResolutionWidth = ConfigVariable.GetInt("Configuration", "CustomResolutionWidth", 1920, true);
+            customResolutionHeight = ConfigVariable.GetInt("Configuration", "CustomResolutionHeight", 1080, true);
+            customResolutionFullscreen = ConfigVariable.GetBool("Configuration", "CustomResolutionFullscreen", true, true);
+            showTrueBeautyOnStartup = ConfigVariable.GetBool("Fun", "ShowTrueBeautyOnStartup", false, true);
+
+            if (useCustomResolution == true)
+            {
+                Screen.SetResolution(customResolutionWidth, customResolutionHeight, customResolutionFullscreen);
+            }
+
+            if (showTrueBeautyOnStartup == true)
+            {
+                Application.OpenURL("https://www.youtube.com/watch?v=WNYlOL77l9s");
+            }
         }
 
         private void SceneManagerOnActiveSceneChanged(Scene oldScene, Scene newScene)
@@ -81,11 +108,11 @@ namespace adVance
             RazerChroma.UpdateColors();
 
             //Custom refresh rate cap - Sets the game's maximum refresh rate to 300.
-            if (Application.targetFrameRate != 300)
+            if (Application.targetFrameRate != targetFramerate)
             {
                 oldTargetFramerate = Application.targetFrameRate;
-                Application.targetFrameRate = 300;
-                Console.WriteLine("[" + Name + "] Set maximum framerate to " + Application.targetFrameRate + ", old framerate was " + oldTargetFramerate);
+                Application.targetFrameRate = targetFramerate;
+                Console.WriteLine("[" + Name + "] Set maximum framerate to " + targetFramerate + ", old framerate was " + oldTargetFramerate);
             }
         }
 
