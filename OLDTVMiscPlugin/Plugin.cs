@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Media;
-using TMPro;
+﻿using IllusionPlugin;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using IllusionPlugin;
 
 namespace adVance
 {
@@ -15,11 +9,12 @@ namespace adVance
     {
         //Initialize variables
         public string Name => "adVance";
-        public string Version => "0.5.0";
+        public string Version => "0.6.0";
 
-        public static bool arePeripheralsWhite = false;
+        public static bool arePeripheralsInitialized = false;
 
         public int oldTargetFramerate;
+        public int oldVSyncCount;
 
         public int targetFramerate;
         public bool useCustomResolution;
@@ -27,6 +22,9 @@ namespace adVance
         public int customResolutionHeight;
         public bool customResolutionFullscreen;
         public bool showTrueBeautyOnStartup;
+        public static string chromaMode;
+        public static int vSyncCount;
+        Config ConfigVariable = new Config("adVance");
 
         public void OnApplicationStart()
         {
@@ -37,19 +35,31 @@ namespace adVance
             Console.WriteLine("[" + Name + "] OnApplicationStart is running");
 
             //Initialize config and get values from config or use default value and write it to config if it doesn't exist
-            Config ConfigVariable = new Config("adVance");
             targetFramerate = ConfigVariable.GetInt("Configuration", "FrameRateCap", 300, true);
             useCustomResolution = ConfigVariable.GetBool("Configuration", "UseCustomResolution", false, true);
             customResolutionWidth = ConfigVariable.GetInt("Configuration", "CustomResolutionWidth", 1920, true);
             customResolutionHeight = ConfigVariable.GetInt("Configuration", "CustomResolutionHeight", 1080, true);
             customResolutionFullscreen = ConfigVariable.GetBool("Configuration", "CustomResolutionFullscreen", true, true);
+            chromaMode = ConfigVariable.GetString("Configuration", "RazerChromaMode", "default", true);
+
+            vSyncCount = ConfigVariable.GetInt("QualitySettings", "VSyncCount", 0, true);
+
             showTrueBeautyOnStartup = ConfigVariable.GetBool("Fun", "ShowTrueBeautyOnStartup", false, true);
+
+            //Revert Chroma Mode to default if the config has an invalid mode
+            if (chromaMode != "default" && chromaMode != "colorful")
+            {
+                chromaMode = "default";
+                ConfigVariable.SetString("Configuration", "RazerChromaMode", "default");
+            }
 
             if (useCustomResolution == true)
             {
                 Screen.SetResolution(customResolutionWidth, customResolutionHeight, customResolutionFullscreen);
             }
 
+            //don't question this
+            //you didn't see anything
             if (showTrueBeautyOnStartup == true)
             {
                 Application.OpenURL("https://www.youtube.com/watch?v=WNYlOL77l9s");
@@ -74,7 +84,7 @@ namespace adVance
 
             if (scene.name == "Scene name here")
             {
-                 //Code to execute when a certain scene is loaded
+                //Code to execute when a certain scene is loaded
             }
         }
 
@@ -107,12 +117,20 @@ namespace adVance
             RazerChroma.Init();
             RazerChroma.UpdateColors();
 
-            //Custom refresh rate cap - Sets the game's maximum refresh rate to 300.
+            //Custom refresh rate cap - Sets the game's maximum refresh rate to whatever is defined in the config.
             if (Application.targetFrameRate != targetFramerate)
             {
                 oldTargetFramerate = Application.targetFrameRate;
                 Application.targetFrameRate = targetFramerate;
                 Console.WriteLine("[" + Name + "] Set maximum framerate to " + targetFramerate + ", old framerate was " + oldTargetFramerate);
+            }
+
+            if (QualitySettings.vSyncCount != vSyncCount)
+            {
+                oldVSyncCount = QualitySettings.vSyncCount;
+                QualitySettings.vSyncCount = vSyncCount;
+                Console.WriteLine("[" + Name + "] Set V-Sync count to " + vSyncCount + ", old framerate was " + oldVSyncCount);
+                ConfigVariable.SetInt("QualitySettings", "VSyncCount", vSyncCount);
             }
         }
 
