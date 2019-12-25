@@ -46,7 +46,20 @@ namespace adVance
 
         void Update()
         {
-            gameTextColorRGBA = gp.ColorText.GetComponent<TextMesh>().color;
+            if (currentGameMode == "Normal")
+            {
+                gameTextColorRGBA = gp.ColorText.GetComponent<TextMesh>().color;
+            }
+            if (currentGameMode == "Infinite")
+            {
+                gameTextColorRGBA = infinitemodegp.ColorText.GetComponent<TextMesh>().color;
+            }
+            if (currentGameMode == null)
+            {
+                gameTextColorRGBA = UnityEngine.Color.black;
+            }
+
+
             currentFrequency = MonitorFreqTimer.currentFreq;
         }
 
@@ -62,7 +75,7 @@ namespace adVance
 
             if (showSettings)
             {
-                // Register the window.
+                // Register the window
                 windowRect = GUI.Window(0, windowRect, DrawSettingsWindow, "adVance In-Game menu");
             }
         }
