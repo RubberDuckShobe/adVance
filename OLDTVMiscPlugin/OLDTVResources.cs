@@ -21,6 +21,7 @@ namespace adVance
         public Rect windowRect = new Rect(20, 20, 500, 600);
 
         public static string currentGameMode = null;
+        public static bool gameModeWasPrinted = false;
 
         void Awake()
         {
@@ -110,24 +111,29 @@ namespace adVance
                 {
                     Console.WriteLine("[adVance] Current game mode is " + currentGameMode);
                 }
+                RazerChroma.SetColorsToTextColor(Corale.Colore.Core.Color.Black);
+
+                gameModeWasPrinted = false;
             }
         }
 
         [HarmonyPatch(typeof(GamePlay))]
-        [HarmonyPatch("Start")]
+        [HarmonyPatch("PlayerInput_MouseNKeyboard")]
         class OnNormalModeStart
         {
             static void Prefix()
             {
-                Console.WriteLine("[adVance] Player just started a normal mode game");
                 currentGameMode = "Normal";
-                if (currentGameMode == null)
+                if (currentGameMode == null && gameModeWasPrinted == false)
                 {
                     Console.WriteLine("[adVance] Current game mode is null");
+                    gameModeWasPrinted = true;
                 }
-                else
+                
+                if (gameModeWasPrinted == false)
                 {
                     Console.WriteLine("[adVance] Current game mode is " + currentGameMode);
+                    gameModeWasPrinted = true;
                 }
             }
         }
@@ -148,24 +154,29 @@ namespace adVance
                 {
                     Console.WriteLine("[adVance] Current game mode is " + currentGameMode);
                 }
+                RazerChroma.SetColorsToTextColor(Corale.Colore.Core.Color.Black);
+
+                gameModeWasPrinted = false;
             }
         }
 
         [HarmonyPatch(typeof(InfiniteModeGamePlay))]
-        [HarmonyPatch("Start")]
+        [HarmonyPatch("PlayerInput_MouseNKeyboard")]
         class OnInfiniteModeStart
         {
             static void Prefix()
             {
-                Console.WriteLine("[adVance] Player just started an infinite mode game");
                 currentGameMode = "Infinite";
-                if (currentGameMode == null)
+                if (currentGameMode == null && gameModeWasPrinted == false)
                 {
                     Console.WriteLine("[adVance] Current game mode is null");
+                    gameModeWasPrinted = true;
                 }
-                else
+
+                if (gameModeWasPrinted == false)
                 {
                     Console.WriteLine("[adVance] Current game mode is " + currentGameMode);
+                    gameModeWasPrinted = true;
                 }
             }
         }

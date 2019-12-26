@@ -9,7 +9,7 @@ namespace adVance
     {
         //Initialize variables
         public string Name => "adVance";
-        public string Version => "0.6.0";
+        public string Version => "0.7.0";
 
         public static bool arePeripheralsInitialized = false;
 
@@ -23,7 +23,8 @@ namespace adVance
         public bool customResolutionFullscreen;
         public bool showTrueBeautyOnStartup;
         public static string chromaMode;
-        public static int vSyncCount;
+        public int vSyncCount;
+        public string anisotropicFiltering;
         Config ConfigVariable = new Config("adVance");
 
         public void OnApplicationStart()
@@ -43,6 +44,7 @@ namespace adVance
             chromaMode = ConfigVariable.GetString("Configuration", "RazerChromaMode", "default", true);
 
             vSyncCount = ConfigVariable.GetInt("QualitySettings", "VSyncCount", 0, true);
+            anisotropicFiltering = ConfigVariable.GetString("QualitySettings", "AnisotropicFiltering", "disable", true);
 
             showTrueBeautyOnStartup = ConfigVariable.GetBool("Fun", "ShowTrueBeautyOnStartup", false, true);
 
@@ -131,6 +133,22 @@ namespace adVance
                 QualitySettings.vSyncCount = vSyncCount;
                 Console.WriteLine("[" + Name + "] Set V-Sync count to " + vSyncCount + ", old framerate was " + oldVSyncCount);
                 ConfigVariable.SetInt("QualitySettings", "VSyncCount", vSyncCount);
+            }
+
+            if (anisotropicFiltering == "disable" && QualitySettings.anisotropicFiltering == AnisotropicFiltering.Enable || QualitySettings.anisotropicFiltering == AnisotropicFiltering.ForceEnable)
+            {
+                QualitySettings.anisotropicFiltering = AnisotropicFiltering.Disable;
+                Console.WriteLine("[" + Name + "] Disabled Anisotropic Filtering");
+            }
+            if (anisotropicFiltering == "enable" && QualitySettings.anisotropicFiltering == AnisotropicFiltering.Disable || QualitySettings.anisotropicFiltering == AnisotropicFiltering.ForceEnable)
+            {
+                QualitySettings.anisotropicFiltering = AnisotropicFiltering.Enable;
+                Console.WriteLine("[" + Name + "] Enabled Anisotropic Filtering");
+            }
+            if (anisotropicFiltering == "forceenable" && QualitySettings.anisotropicFiltering == AnisotropicFiltering.Disable || QualitySettings.anisotropicFiltering == AnisotropicFiltering.Enable)
+            {
+                QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
+                Console.WriteLine("[" + Name + "] Force-enabled Anisotropic Filtering");
             }
         }
 

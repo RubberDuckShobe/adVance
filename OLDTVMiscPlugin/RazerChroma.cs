@@ -36,6 +36,11 @@ namespace adVance
 
         public static void SetColorsToTextColor(ColoreColor color)
         {
+            if (OLDTVResources.currentGameMode == null)
+            {
+                color = ColoreColor.Black;
+            }
+
             if (Plugin.chromaMode == "colorful")
             {
                 Chroma.Instance.SetAll(color);
