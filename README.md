@@ -16,6 +16,7 @@ It's also built on [Kylemc1413's Beat Saber Plugin Template](https://github.com/
 - Custom refresh rate cap defined by the config file, making it possible to play the game at 144FPS or higher (Unmodded base game max setting is 120FPS)
 - Can get current color of game text, current game mode, current frequency and more soon™
 - Config system (Taken from [Beat Saber Utils](https://github.com/Kylemc1413/Beat-Saber-Utils)) which makes it possible to set custom refresh rates, custom resolutions, Razer Chroma lighting mode [and more](https://github.com/RubberDuckShobe/adVance/wiki/The-config-file-and-its-functions)!
+- Discord Rich Presence (Shows current game status, game mode and time playing on Discord)
 
 ## Installation
 Refer to [adVance's Wiki](https://github.com/RubberDuckShobe/adVance/wiki) for a detailed guide on how to install adVance.
@@ -23,7 +24,6 @@ Refer to [adVance's Wiki](https://github.com/RubberDuckShobe/adVance/wiki) for a
 ## Planned Features
 Keep in mind that there's a possibility that some of these features might not be added depending on neccessity and how difficult adding them is.
 - The ability to get the current continent
-- Discord Rich Presence
 - Add to Razer Chroma integration (Maybe something to indicate the current continent)
 
 ## Why?
