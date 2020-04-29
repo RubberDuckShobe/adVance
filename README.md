@@ -30,11 +30,5 @@ Keep in mind that there's a possibility that some of these features might not be
 To learn C#, Unity game modding/developing and to make OLDTV even better.
 It's an awesome free game which deserves much more love and attention.
 
-## Support the project!
-You can support me and the project on [Patreon](https://patreon.com/m1nt_).
-
 ## Special Thanks
 Special thanks to the folks over on the [Beat Saber Modding Group Discord](https://discord.gg/beatsabermods) (for answering my beginner Unity questions and helping with other stuff), without them this wouldn't have been possible at all!
-
-Shoutout to all of my patreons:
-- This is where I'm going to put my patreons. If I get any.
