@@ -1,3 +1,8 @@
+# DON'T USE THIS ANYMORE!!!
+Please use [adVanceBepis](https://github.com/RubberDuckShobe/adVanceBepis) instead. This repo is for the old adVance mod, which is broken and really, really sucks. Also, this uses IPA. Nobody should have to deal with that.
+
+
+
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)](https://forthebadge.com)
