@@ -1,5 +1,5 @@
-# DON'T USE THIS ANYMORE!!!
-Please use [adVanceBepis](https://github.com/RubberDuckShobe/adVanceBepis) instead. This repo is for the old adVance mod, which is broken and really, really sucks. Also, this uses IPA. Nobody should have to deal with that.
+# DON'T USE THIS ANYMORE!!! Please use [adVanceBepis](https://github.com/RubberDuckShobe/adVanceBepis) instead. 
+This repo is for the old adVance mod, which is broken and really, really sucks. Also, this uses IPA. Nobody should have to deal with that.
 
 
 
